@@ -10,8 +10,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
   ////// both of these result in the following error:
-  /// "Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. 
-  /// Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."
+  
+  /// FirebaseError: Firebase: No Firebase App '[DEFAULT]' has been created - call Firebase App.initializeApp() (app/no-app)
   
   //const app = getApp()
   //const auth = getAuth(app);  
