@@ -13,6 +13,9 @@ const SignUp = () => {
   
   /// FirebaseError: Firebase: No Firebase App '[DEFAULT]' has been created - call Firebase App.initializeApp() (app/no-app)
   
+  /// However, next-firebase-auth should have taken care of the initalizing already, as called out here:
+  /// https://github.com/gladly-team/next-firebase-auth/blob/main/example/components/FirebaseAuth.js
+  
   //const app = getApp()
   //const auth = getAuth(app);  
   
