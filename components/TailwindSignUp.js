@@ -1,7 +1,7 @@
 // https://tailwindui.com/components/application-ui/forms/sign-in-forms
 import { LockClosedIcon } from '@heroicons/react/solid'
 
-export default function SignUp() {
+export default function SignUp(props) {
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -16,15 +16,15 @@ export default function SignUp() {
               Sign up for an account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <div className="mt-8 space-y-6">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
+                  id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -52,6 +52,7 @@ export default function SignUp() {
             <div>
               <button
                 type="submit"
+                onClick={() => props.onSignUp(email.value, password.value)}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -60,7 +61,7 @@ export default function SignUp() {
                 Sign up
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

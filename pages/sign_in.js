@@ -1,7 +1,12 @@
 import Layout from '@/components/layout';
 import TWSignIn from '@/components/TailwindSignIn';
+import {
+  withAuthUser,
+  withAuthUserTokenSSR,
+  AuthAction,
+} from 'next-firebase-auth'
 
-export default function SignIn() {
+const SignIn = () => {
   return (
     <Layout>
       <div>
@@ -10,3 +15,11 @@ export default function SignIn() {
     </Layout>      
   )
 }
+
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+})()
+
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+})(SignIn)

@@ -11,8 +11,8 @@ import {
   useAuthUser,
   withAuthUser,
   withAuthUserTokenSSR,
+  AuthAction,
 } from 'next-firebase-auth'
-
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
@@ -20,9 +20,10 @@ export const getStaticProps = async ({ locale }) => ({
   },
 })
 
+const MyLoader = () => <div>Loading...</div>
 
-//const Home = () => {
-export default function Home() {
+const Home = () => {
+//export default function Home() {
 
   const { t } = useTranslation('common');
 
@@ -57,8 +58,9 @@ export default function Home() {
   )
 }
 
-
-// Note that this is a higher-order function.
-//export const getServerSideProps = withAuthUserTokenSSR()()
-
-//export default withAuthUser()(Home)
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  LoaderComponent: MyLoader,
+})(Home)
