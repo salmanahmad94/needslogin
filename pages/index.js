@@ -58,9 +58,11 @@ const Home = () => {
   )
 }
 
+// Commented out to prevent infinite redirects.
+
 export default withAuthUser({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  // whenAuthed: AuthAction.REDIRECT_TO_APP,
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  // whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
   LoaderComponent: MyLoader,
 })(Home)
